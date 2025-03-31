@@ -36,7 +36,6 @@ class StoreData:
           connection.execute(sqlInsertStatement, final_params)
           connection.commit()
 
-
   def store_network_events(self, filename):
     table = 'systemevents(timestmp, event, pid, name, hostname, ppid, parent, username, dnsname, dnsdate, sourceip, sourceport, destip, destport, asname, status, sid)'
     with psycopg.connect(host=self.host, port=self.port, dbname=self.db, user=self.user, password=self.password, sslmode=self.sslmode, sslrootcert=self.sslrootcert) as connection:

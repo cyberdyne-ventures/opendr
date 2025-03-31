@@ -23,7 +23,8 @@ def get_installed_software():
         try:
           name = winreg.QueryValueEx(sub_key, "DisplayName")[0]
           version = winreg.QueryValueEx(sub_key, "DisplayVersion")[0]
-          software_list.append((name, version))
+          installation_directory = winreg.QueryValueEx(sub_key, "InstallLocation")[0]
+          software_list.append((name, version, installation_directory))
         except FileNotFoundError:
           continue
         finally:
